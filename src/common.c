@@ -2,7 +2,9 @@
 
 uint8_t pattern1[PATTERN_SIZE];
 uint8_t pattern2[PATTERN_SIZE];
+
 volatile uint64_t sink = 0;
+volatile uint8_t always_true = 1;
 
 void init_patterns(void)
 {

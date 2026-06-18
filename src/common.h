@@ -10,7 +10,9 @@
 
 extern uint8_t pattern1[PATTERN_SIZE];
 extern uint8_t pattern2[PATTERN_SIZE];
+
 extern volatile uint64_t sink;
+extern volatile uint8_t always_true;
 
 void init_patterns(void);
 
