@@ -53,17 +53,23 @@ uint64_t global_correlated_gap(size_t gap)
     uint64_t local = 0;
 
     for (size_t i = 0; i < ITER; i++) {
-        uint8_t a = pattern1[i & PATTERN_MASK];
+        size_t idx = i & PATTERN_MASK;
+
+        uint8_t a = pattern1[idx];
+        uint8_t b = pattern_same[idx];
 
         if (a)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            // if (always_true)
+            //     local++;
+            if(d)
                 local++;
         }
 
-        if (a)
+        if (b)
             local++;
     }
 
@@ -84,7 +90,10 @@ uint64_t global_uncorrelated_gap(size_t gap)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            // if (always_true)
+            //     local++;
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if(d)
                 local++;
         }
 
@@ -102,17 +111,23 @@ uint64_t global_anticorrelated_gap(size_t gap)
     uint64_t local = 0;
 
     for (size_t i = 0; i < ITER; i++) {
-        uint8_t a = pattern1[i & PATTERN_MASK];
+        size_t idx = i & PATTERN_MASK;
+
+        uint8_t a = pattern1[idx];
+        uint8_t inv_a = pattern_inv[idx]; 
 
         if (a)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            // if (always_true)
+            //     local++;
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if(d)
                 local++;
         }
 
-        if (!a)
+        if (inv_a)
             local++;
     }
 
@@ -136,7 +151,8 @@ uint64_t local_periodic_pattern(size_t period, size_t gap)
         pattern_index = (pattern_index + 1) & period_mask;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if (d)
                 local++;
         }
     }
@@ -157,7 +173,8 @@ uint64_t local_random_pattern(size_t gap)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if (d)
                 local++;
         }
     }

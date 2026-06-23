@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp2_global_distance anticorrelated 120' (5 runs):
+
+    24.403.307.190      branches                                                      ( +-  0,00% )
+       199.811.675      branch-misses             #    0,82% of all branches          ( +-  0,00% )
+    85.529.479.563      instructions              #    3,01  insn per cycle           ( +-  0,00% )
+    28.429.985.302      cycles                                                        ( +-  0,06% )
+
+            7,7278 +- 0,0795 seconds time elapsed  ( +-  1,03% )
+

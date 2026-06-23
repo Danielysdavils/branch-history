@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp1_global_history uncorrelated' (5 runs):
+
+       302.062.412      branches                                                      ( +-  0,03% )
+        99.948.710      branch-misses             #   33,07% of all branches          ( +-  0,01% )
+     1.122.481.591      instructions              #    0,43  insn per cycle           ( +-  0,04% )
+     2.548.487.706      cycles                                                        ( +-  0,56% )
+
+            0,8560 +- 0,0257 seconds time elapsed  ( +-  3,00% )
+

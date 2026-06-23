@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp1_global_history single' (5 runs):
+
+       201.984.302      branches                                                      ( +-  0,00% )
+        50.060.571      branch-misses             #   24,78% of all branches          ( +-  0,00% )
+       771.964.416      instructions              #    0,51  insn per cycle           ( +-  0,00% )
+     1.517.140.187      cycles                                                        ( +-  0,27% )
+
+            0,5247 +- 0,0119 seconds time elapsed  ( +-  2,26% )
+

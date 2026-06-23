@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp4_effective_size local 8 32' (5 runs):
+
+     6.702.365.728      branches                                                      ( +-  0,00% )
+        13.246.229      branch-misses             #    0,20% of all branches          ( +-  1,09% )
+    23.511.597.048      instructions              #    3,30  insn per cycle           ( +-  0,00% )
+     7.228.733.058      cycles                                                        ( +-  0,95% )
+
+            2,1666 +- 0,0659 seconds time elapsed  ( +-  3,04% )
+

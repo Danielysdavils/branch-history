@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp4_effective_size global anticorrelated 8' (5 runs):
+
+     2.002.055.407      branches                                                      ( +-  0,00% )
+        50.233.947      branch-misses             #    2,51% of all branches          ( +-  0,01% )
+     7.122.410.224      instructions              #    2,23  insn per cycle           ( +-  0,00% )
+     3.183.604.780      cycles                                                        ( +-  0,22% )
+
+            0,8779 +- 0,0117 seconds time elapsed  ( +-  1,34% )
+

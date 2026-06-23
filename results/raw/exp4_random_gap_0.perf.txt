@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp4_effective_size random 0' (5 runs):
+
+       302.069.952      branches                                                      ( +-  0,00% )
+        50.122.383      branch-misses             #   16,60% of all branches          ( +-  0,01% )
+       972.594.893      instructions              #    0,50  insn per cycle           ( +-  0,01% )
+     1.936.613.086      cycles                                                        ( +-  0,21% )
+
+           0,53515 +- 0,00558 seconds time elapsed  ( +-  1,04% )
+

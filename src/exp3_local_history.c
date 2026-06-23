@@ -61,7 +61,11 @@ uint64_t local_spy_pattern(size_t period, size_t gap)
         pattern_index = (pattern_index + 1) & period_mask;
 
         for (size_t j = 0; j < gap; j++){
-            if(always_true)
+            // if(always_true)
+            //     local++;
+
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if(d)
                 local++;
         }
     }
@@ -83,7 +87,10 @@ uint64_t random_spy_pattern(size_t gap)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            // if (always_true)
+            //     local++;
+            if(d)
                 local++;
         }
     }

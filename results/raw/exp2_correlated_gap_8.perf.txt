@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp2_global_distance correlated 8' (5 runs):
+
+     2.002.136.364      branches                                                      ( +-  0,00% )
+        50.215.267      branch-misses             #    2,51% of all branches          ( +-  0,01% )
+     7.122.763.889      instructions              #    2,15  insn per cycle           ( +-  0,00% )
+     3.229.352.351      cycles                                                        ( +-  1,47% )
+
+            1,0893 +- 0,0474 seconds time elapsed  ( +-  4,35% )
+

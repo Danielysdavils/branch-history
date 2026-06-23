@@ -66,8 +66,28 @@ uint64_t double_uncorrelated(void)
     return local;
 }
 
+// (!!) comentada porque compilador optimzou a segunda branch e considerou como se fosse só 1!
+
 // dois branch com mesmo resultado - serve como caso onde o histórico global
 // pode ajudar, pois o resultado recente de branch A pode ajudar a prever branch B 
+// __attribute__((noinline))
+// uint64_t double_correlated(void)
+// {
+//     uint64_t local = 0;
+
+//     for (size_t i = 0; i < ITER; i++)
+//     {
+//         uint8_t a = pattern1[i & PATTERN_MASK];
+
+//         if(a) local++;
+
+//         if(a) local++; 
+//     }
+
+//     sink += local;
+//     return local;
+// }
+
 __attribute__((noinline))
 uint64_t double_correlated(void)
 {
@@ -75,16 +95,21 @@ uint64_t double_correlated(void)
 
     for (size_t i = 0; i < ITER; i++)
     {
-        uint8_t a = pattern1[i & PATTERN_MASK];
+        size_t idx = i & PATTERN_MASK;
+
+        uint8_t a = pattern1[idx];
+        uint8_t b = pattern_same[idx];
 
         if(a) local++;
 
-        if(a) local++; 
+        if(b) local++; 
     }
 
     sink += local;
     return local;
 }
+
+// (!!!) COMENTADO PORQ COMPILADOR OTIMIZOU
 
 // testa de preditor aprende relação oposta (B = !A)
 // ajuda a verificar se o preditor aprende apenas "repetição" ou se consegue capturar uma relação mais geral
@@ -92,6 +117,25 @@ uint64_t double_correlated(void)
 // se o preditor fosse bom só quando dois branches tem o mesmo resultado correlated melhoraria mas anticorrelated talvez naõ
 // se anticorrelated também melhora em relaçao a uncorrelated, a evidencia fica mais interessante:
 // o preditor consegue explorar contexto histórico, não apenas repetir últimos resultados
+
+// __attribute__((noinline))
+// uint64_t double_anticorrelated(void)
+// {
+//     uint64_t local = 0;
+
+
+//     for (size_t i = 0; i < ITER; i++)
+//     {
+//         uint8_t a = pattern1[i & PATTERN_MASK];
+
+//         if(a) local++;
+
+//         if(!a) local++;
+//     }
+
+//     sink += local;
+//     return local;
+// }
 
 __attribute__((noinline))
 uint64_t double_anticorrelated(void)
@@ -101,11 +145,14 @@ uint64_t double_anticorrelated(void)
 
     for (size_t i = 0; i < ITER; i++)
     {
-        uint8_t a = pattern1[i & PATTERN_MASK];
+        size_t idx = i & PATTERN_MASK;
+
+        uint8_t a = pattern1[idx];
+        uint8_t inv_a = pattern_inv[idx];
 
         if(a) local++;
 
-        if(!a) local++;
+        if(inv_a) local++;
     }
 
     sink += local;

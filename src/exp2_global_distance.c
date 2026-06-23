@@ -34,6 +34,7 @@
 
 #define MAX_GAP 120 
 
+// ajustamos conforme pattern_same en exp1
 __attribute__((noinline))
 uint64_t correlated_gap(size_t gap)
 {
@@ -41,17 +42,21 @@ uint64_t correlated_gap(size_t gap)
 
     for (size_t i = 0; i < ITER; i++)
     {
-        uint8_t a = pattern1[i & PATTERN_MASK];
+        size_t idx = i & PATTERN_MASK;
+
+        uint8_t a = pattern1[idx];
+        uint8_t b = pattern_same[idx];
 
         if(a)
             local++;
 
         for (size_t j = 0; j < gap; j++){
-            if(1)
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if(d)
                 local++;
         } 
 
-        if (a)
+        if (b)
             local++;
     }
 
@@ -72,8 +77,13 @@ uint64_t uncorrelated_gap(size_t gap)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            // branch dummy
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if (d)
                 local++;
+
+            // if (always_true)
+            //     local++;
         }
 
         if (b)
@@ -90,17 +100,22 @@ uint64_t anticorrelated_gap(size_t gap)
     uint64_t local = 0;
 
     for (size_t i = 0; i < ITER; i++) {
-        uint8_t a = pattern1[i & PATTERN_MASK];
+        size_t idx = i & PATTERN_MASK;
+
+        uint8_t a = pattern1[idx];
+        uint8_t inv_a = pattern_inv[idx];
 
         if (a)
             local++;
 
         for (size_t j = 0; j < gap; j++) {
-            if (always_true)
+            // branch dummy
+            uint8_t d = dummy_pattern[j & DUMMY_MASK];
+            if (d)
                 local++;
         }
 
-        if (!a)
+        if (inv_a)
             local++;
     }
 

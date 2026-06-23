@@ -1,0 +1,10 @@
+
+ Performance counter stats for './bin/exp3_local_history local 32 32' (5 runs):
+
+     6.702.305.578      branches                                                      ( +-  0,00% )
+         3.151.494      branch-misses             #    0,05% of all branches          ( +-  0,62% )
+    23.520.673.688      instructions              #    3,34  insn per cycle           ( +-  0,00% )
+     7.029.244.320      cycles                                                        ( +-  0,17% )
+
+            1,9915 +- 0,0270 seconds time elapsed  ( +-  1,35% )
+
